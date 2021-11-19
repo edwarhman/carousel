@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Carousel</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="carousel">
-    <div id="prev-button" class="spin button">&lt;</div>
-    <div class="carousel__inner">
-      <div class="carousel__item box active" id="box1"><img src="IMG/1.jpg" width="100" alt=""></div>
-      <div class="carousel__item box" id="box2"><img src="IMG/2.jpg" alt=""></div>
-      <div class="carousel__item box" id="box3"><img src="IMG/3.jpeg" width="100" alt=""></div>
+  <head>
+    <meta charset="UTF-8">
+    <title>Carousel</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="carousel">
+      <div class="carousel__button left">&lt;</div>
+      <div class="carousel__inner">
+        <div class="carousel__item box active" id="box1"><img src="IMG/1.jpg" width="100" alt=""></div>
+        <div class="carousel__item box" id="box2"><img src="IMG/2.jpg" alt=""></div>
+        <div class="carousel__item box" id="box3"><img src="IMG/3.jpeg" width="100" alt=""></div>
+      </div>
+      <ol class="carousel__indicators">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+      </ol>
+      <div class="carousel__button right">&lt;</div>
+
     </div>
-  </div>
-  <script src="main.js"></script>
-</body>
+    <script src="main.js"></script>
+  </body>
 </html>
