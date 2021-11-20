@@ -4,9 +4,14 @@ let nextButton = document.querySelector('.carousel__button.right');
 let prevButton = document.querySelector('.carousel__button.left');
 let currentActive = 0;
 let timeOutAnimation = 2000;
+let autoRotation;
+let rotationTimer = 5000;
 
 // direction argument must be the "left" or "right"
 function spinCarousel(activeIndex, nextIndex, direction) {
+  document.removeEventListener('click', clickHandler);
+  clearTimeout(autoRotation);
+
   const active = carouselItems[activeIndex];
   const next = carouselItems[nextIndex];
 
@@ -15,21 +20,23 @@ function spinCarousel(activeIndex, nextIndex, direction) {
   }
 
   next.classList.add("next", direction);
-    setTimeout(()=> {
-      next.classList.add("active");
-      active.classList.add(direction);
-      next.classList.remove(direction, "next");
-      carouselIndicators[activeIndex].classList.remove('active');
-      carouselIndicators[nextIndex].classList.add('active');
-    }, 10);
-  setTimeout(()=> active.classList.remove("active", direction), timeOutAnimation);
-
-  currentActive = nextIndex;
+  setTimeout(()=> {
+    next.classList.add("active");
+    active.classList.add(direction);
+    next.classList.remove(direction, "next");
+    carouselIndicators[activeIndex].classList.remove('active');
+    carouselIndicators[nextIndex].classList.add('active');
+  }, 10);
+  setTimeout(()=> {
+    active.classList.remove("active", direction)
+    currentActive = nextIndex;
+    autoRotation = setTimeout(()=> spinCarousel(currentActive, (currentActive + 1 >= carouselIndicators.length)? 0 : currentActive + 1 , "left"), rotationTimer);
+    document.addEventListener('click', clickHandler);
+  }, timeOutAnimation);
 }
 
 
-document.addEventListener('click', (e)=> {
-  console.log(e.target);
+function clickHandler(e) {
   let nextIndex;
   switch(e.target) {
     case prevButton:
@@ -39,7 +46,6 @@ document.addEventListener('click', (e)=> {
       spinCarousel(currentActive, (currentActive + 1>= carouselItems.length)? 0 : currentActive + 1, "left");
       break;
     case carouselIndicators[nextIndex = carouselIndicators.indexOf(e.target)]:
-      console.log("se presiono el indicador");
       const direction = (nextIndex > currentActive) ? "left" : "right";
       if (nextIndex !== currentActive) {
         spinCarousel(currentActive, nextIndex, direction);
@@ -47,4 +53,7 @@ document.addEventListener('click', (e)=> {
       break;
     default:
   }
-});
+}
+
+autoRotation = setTimeout(()=> spinCarousel(currentActive, (currentActive + 1 >= carouselIndicators.length)? 0 : currentActive + 1 , "left"), rotationTimer);
+document.addEventListener('click', clickHandler);
