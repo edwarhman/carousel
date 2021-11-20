@@ -29,12 +29,21 @@ function spinCarousel(activeIndex, nextIndex, direction) {
 
 
 document.addEventListener('click', (e)=> {
+  console.log(e.target);
+  let nextIndex;
   switch(e.target) {
     case prevButton:
       spinCarousel(currentActive, (currentActive - 1 < 0)? carouselItems.length - 1 : currentActive - 1, "right");
       break;
     case nextButton:
       spinCarousel(currentActive, (currentActive + 1>= carouselItems.length)? 0 : currentActive + 1, "left");
+      break;
+    case carouselIndicators[nextIndex = carouselIndicators.indexOf(e.target)]:
+      console.log("se presiono el indicador");
+      const direction = (nextIndex > currentActive) ? "left" : "right";
+      if (nextIndex !== currentActive) {
+        spinCarousel(currentActive, nextIndex, direction);
+      }
       break;
     default:
   }
