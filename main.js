@@ -3,7 +3,7 @@ let carouselIndicators = Array.from(document.querySelector('.carousel__indicator
 let nextButton = document.querySelector('.carousel__button.right');
 let prevButton = document.querySelector('.carousel__button.left');
 let currentActive = 0;
-let timeOutAnimation = 2000;
+let timeOutAnimation = 500;
 let autoRotation;
 let rotationTimer = 5000;
 

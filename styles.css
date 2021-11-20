@@ -77,11 +77,17 @@ body {
   z-index: 50;
 }
 
+
 .carousel__indicators li {
+  cursor: pointer;
   height: 100%;
   border: 1px solid white;
   border-radius: 50%;
   width: 0.6rem;
+}
+
+.carousel__indicators li:hover {
+  background-color: rgba(190, 190, 190, 0.5);
 }
 
 
@@ -106,17 +112,17 @@ body {
 
 .carousel__item.active {
   left: 0;
-  transition: left 2s linear;
+  transition: left 0.5s linear;
 }
 
 .active.left {
   left: -100%;
-  transition: left 2s linear;
+  transition: left 0.5s linear;
 }
 
 .active.right {
   left: 100%;
-  transition: left 2s linear;
+  transition: left 0.5s linear;
 }
 
 .next.left {
