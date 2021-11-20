@@ -1,1 +1,1 @@
-Practicing making a carousel
+Practicing making a carousel using vanilla Javascript
