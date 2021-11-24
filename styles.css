@@ -9,6 +9,13 @@ body {
 *, *::after, *::before {
   margin: 0;
   padding: 0;
+  box-sizing: inherit;
+}
+
+
+h2 {
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .box {
@@ -16,15 +23,6 @@ body {
   width: 100%;
 }
 
-#box1 {
-  background-color: yellow;
-}
-#box2 {
-  background-color: blue;
-}
-#box3 {
-  background-color: red;
-}
 
 .carousel {
   background-color: #cccccc;
@@ -40,7 +38,7 @@ body {
 }
 
 .carousel__button {
-  width: 15%;
+  width: 11%;
   background-image: linear-gradient( 90deg, rgba(255, 255, 255, 0.2), rgba(0,0,0, 0));
   display: flex;
   justify-content: center;
@@ -50,7 +48,7 @@ body {
   user-select: none;
 
   font-size: 3rem;
-  color: white;
+  color: #000033;
   font-weight: bold;
 
   z-index: 100;
@@ -74,16 +72,17 @@ body {
   height: 0.6rem;
   margin-bottom: 1rem;
   align-self: flex-end;
-  z-index: 50;
+  z-index: 100;
 }
 
 
 .carousel__indicators li {
   cursor: pointer;
   height: 100%;
-  border: 1px solid white;
+  border: 1px solid #000033;
   border-radius: 50%;
   width: 0.6rem;
+  position: relative;
 }
 
 .carousel__indicators li:hover {
@@ -92,22 +91,30 @@ body {
 
 
 .carousel__indicators li.active {
-  background-color: white;
+  background-image: url("IMG/footprint.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border: none;
+  height: 200%;
+  width: 1rem;
 }
 
 .carousel__inner {
   height: 100%;
   width: 100%;
-  background-color: peru;
+  background-color: #ffeeaa;
+  color: #000033;
   position: absolute;
 
-  z-index: 50;
+  z-index: 40;
 
 }
 
 .carousel__item {
   position: absolute;
   left: -100%;
+  padding: 1.5rem 5rem;
+  font-size: 1.3rem;
 }
 
 .carousel__item.active {
@@ -133,7 +140,9 @@ body {
   left: -100%
 }
 
-
-img {
-  width: 100%;
+.carousel__item img {
+  height: 67%;
+  margin: 0.5rem;
+  width: 45%;
+  float: right;
 }
