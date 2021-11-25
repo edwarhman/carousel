@@ -18,23 +18,20 @@ h2 {
   text-align: center;
 }
 
-.box {
-  height: 100%;
-  width: 100%;
-}
-
 
 .carousel {
   background-color: #cccccc;
-  height: 410px;
   max-width: 800px;
   margin: auto;
-  overflow: hidden;
+  position: relative;
+}
 
+.ui-elements-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-
-  position: relative;
 }
 
 .carousel__button {
@@ -70,7 +67,7 @@ h2 {
   list-style: none;
   width: 20%;
   height: 0.6rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
   align-self: flex-end;
   z-index: 100;
 }
@@ -100,21 +97,29 @@ h2 {
 }
 
 .carousel__inner {
-  height: 100%;
   width: 100%;
   background-color: #ffeeaa;
   color: #000033;
-  position: absolute;
-
+  overflow: hidden;
+  position: relative;
   z-index: 40;
 
 }
 
 .carousel__item {
   position: absolute;
+  padding: 1rem 0;
   left: -100%;
-  padding: 1.5rem 5rem;
   font-size: 1.3rem;
+  top: 0;
+  width: 100%;
+  height: calc(100% - 1.5rem);
+}
+
+.carousel__item.first {
+  position: relative;
+  margin-bottom: 1.5rem;
+  height: initial;
 }
 
 .carousel__item.active {
@@ -140,9 +145,38 @@ h2 {
   left: -100%
 }
 
+.image-container {
+  width: 100%;
+  margin: 1rem 0;
+  position: relative;
+  top: 0;
+}
+.image-container::before {
+  content: "";
+  display: block;
+  padding-top: 78%;
+}
+
 .carousel__item img {
-  height: 67%;
-  margin: 0.5rem;
-  width: 45%;
-  float: right;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel__item p {
+  margin: 0 3.5rem ;
+}
+
+@media (min-width: 1024px) {
+  .carousel__item {
+    padding: 1rem 4rem;
+  }
+
+  .image-container {
+    margin: 0 1rem;
+    width: 45%;
+    float: right;
+  }
 }
